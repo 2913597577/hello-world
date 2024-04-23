@@ -4,11 +4,7 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/../model_1/pom.xml" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectRootManager">
+
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
