@@ -1,3 +1,197 @@
 # hello-world
 你好
 修改一下-郗鸿琛
+package com.esay;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class st {
+	    public static void main(String[] args) {
+	        //t1();
+	        //t2();
+	        //t3();
+	    	 t4();
+	    }
+	    //创建一个数组 放入多个数字，统计7出现的次数
+	    public static void t1() {
+	        int[] arr= {3,6,7,5,14,7,12,9,7};
+	        int count=0;//
+	        //for(int i:arr) 增强for循环
+	        for(int i=0;i<arr.length;i++) {
+	            if(arr[i]==7) count++;
+	        }
+	        System.out.println(count);
+	    }
+
+	    //二维数组，比如n*n的，顺时针放入从1到n*n的值
+	    //不会
+	    public static void t2() {
+	        Scanner sc =new Scanner(System.in);
+	            System.out.println("请输入行数：");
+	            int a = sc.nextInt();
+	            System.out.println("请输入列数：");
+	            int b = sc.nextInt();
+	            int[][] array = new int[a][b];
+	            int x = 0, y = 0; //x行y列
+	            for (int i = 1; i <= a * b; ) {
+	                while (y < array[x].length - 1 && array[x][y + 1] == 0) {//横向往右
+	                    array[x][y++] = i++;
+	                    //y++;
+	                }
+	                while (x < array.length && array[x][y] == 0) {//从上往下
+	                    array[x++][y] = i++;
+	                    //x++;
+	                }
+	                x--;//往上跳一行
+	                while (y > 0 && array[x][y - 1] == 0) {//从右往左
+	                    //y--;
+	                    array[x][--y] = i++;
+	                }
+	                while (x > 1 && array[x - 1][y] == 0) {//从下往上
+	                    //--x;
+	                    array[--x][y] = i++;
+	                }
+	                y++;//往右跳一个
+	            }
+
+	            for (int[] a1 : array) {
+	                for (int a2 : a1) {
+	                    if (a2 < 10) {
+	                        System.out.print(" ");
+	                    }
+	                    System.out.print(a2 + " ");
+	                }
+	                System.out.println();
+	            }
+	        }
+
+
+	    //双色球
+	    public static void t3(){
+	      System.out.println("请输入您的双色球号码");
+	        //录入一注彩票  保存买的数
+	        int[] arr1=new int[7];
+	        Scanner sc =new Scanner(System.in);
+	        for (int i=0;i<7;i++){
+	        	//arr1[i]= sc.nextInt();
+	            int n= sc.nextInt();
+	            arr1[i]=n;
+	        }
+          System.out.println("您的号码为"+Arrays.toString(arr1));
+	        //红球1-33  篮球1-16
+	        //系统随机生成中奖号码
+	        //保存中奖号码  注意红球不可重复
+	        int[] arr2 =new int[7];
+	        arr2[0]=(int)(Math.random()*33+1);
+	        int num=0;
+	        for (int i = 1; i <6; i++) {
+	        	num=(int)(Math.random()*33+1);
+	        	for(int j=0;j<i;j++) {
+	        	if(num!=arr2[j]) {
+	        		arr2[i]=num;
+	        	}
+	        	else {
+	        		i--;
+	        		break;
+	        		}
+	        }
+			}
+	        arr2[6]=(int)(Math.random()*16+1);
+	        System.out.println("中奖号码为"+Arrays.toString(arr2));
+	        int temp=0;
+	        int t=0;
+	        for (int i = 0; i < 6; i++) {
+				for (int j = 0; j < 6; j++) {
+					if(arr1[i]==arr2[j])
+						temp++;
+			}
+				
+				}
+					if (arr1[6]==arr2[6]) {
+					t=1;
+				}
+					else t=0;
+					
+	    	if(temp==6&&t==1) System.out.println("恭喜您中一等奖");
+		     else if(temp==6&&t==0) System.out.println("恭喜您中二等奖");
+	         else if(temp==5&&t==1) System.out.println("恭喜您中三等奖");
+	         else if(temp==5||(temp==4&&t==1)) System.out.println("恭喜您中四等奖");
+	         else if(temp==4||(temp==3&&t==1)) System.out.println("恭喜您中五等奖");
+	         else  if(temp==0&&t==1) System.out.println("恭喜您中六等奖");
+	         else System.out.println("未中奖");
+	    }
+
+	    //斗地主
+	    public static void t4(){
+	        List<Poker> list = new ArrayList<>();
+	        List<Poker> list1 = new ArrayList<>();
+	        List<Poker> list2 = new ArrayList<>();
+	        List<Poker> list3 = new ArrayList<>();
+	        String[] arr1 = {"3","4","5","6","7","8","9","10","J","Q","K","A","2"};
+	        String[] arr2 = {"红桃","黑桃","梅花","方块"};
+
+	        for (int i = 0; i < arr1.length; i++) {
+	            for (int j = 0; j < arr2.length; j++) {
+	                Poker p = new Poker();
+	                p.num=arr1[i];
+	                p.color=arr2[j];
+	                list.add(p);
+	            }
+	        }
+	        list.add(new Poker("黑","joker"));
+	        list.add(new Poker("红","joker"));
+            //打乱
+	        Collections.shuffle(list);
+
+	        while (list.size()>3){ // 17x3 = 51 ;  54-51=3
+	            list1.add(list.get(0));
+	            list.remove(0);
+	            list2.add(list.get(0));
+	            list.remove(0);
+	            list3.add(list.get(0));
+	            list.remove(0);
+	        }
+	        System.out.println("玩家一");
+	        for (int i = 0; i < list1.size(); i++) {
+	            System.out.print(list1.get(i) +" ");
+	        }
+	        System.out.println();
+	        System.out.println("玩家二");
+	        for (int i = 0; i < list2.size(); i++) {
+	            System.out.print(list2.get(i) +" ");
+	        }
+	        System.out.println();
+	        System.out.println("玩家三");
+	        for (int i = 0; i < list3.size(); i++) {
+	            System.out.print(list3.get(i) +" ");
+	        }
+	        System.out.println();
+	        System.out.println("剩余牌");
+	        for (int i = 0; i < list.size(); i++) {
+	            System.out.print(list.get(i) +" ");
+	        }
+	    };
+	}
+
+	class Poker{
+	    String color;
+	    String num;
+
+	    public Poker() {
+	    }
+	    public Poker(String color, String num) {
+	        this.color = color;
+	        this.num = num;
+	    }
+
+	    @Override
+	    public String toString() {
+	        return color+num;
+	    }
+	}
+
+	
