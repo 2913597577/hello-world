@@ -1,1 +1,133 @@
+package day3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+
+import javax.xml.namespace.NamespaceContext;
+
+public class Manage {
+	 public static void main(String[] args) {
+	        System.out.println("欢迎进入员工管理系统");
+	        Scanner sc=new Scanner(System.in);
+	        boolean b=true;
+	        List<Employee> list=new ArrayList<>();//保存所有的员工
+	        while(b) {
+	        	
+	        System.out.println("请选择你需要的操作");
+	        System.out.println("1: 新增员工");
+	        System.out.println("2: 编辑员工");
+	        System.out.println("3: 删除员工");
+	        System.out.println("4: 查询员工");
+	        System.out.println("5: 统计员工");//打印每个部门的员工数量
+	        System.out.println("6: 统计员工");//打印每个部门的平均工资
+	        System.out.println("0: 退出");
+	        
+	        String n=sc.next();
+	        switch(n) {
+	        case "1": 
+	        	add(list);
+	        	break;
+	        case "2": 
+	        	update(list);
+	        	break;
+	        case "3": 
+	        	delete(list);
+	        	break;
+	        case "4": 
+	        	select(list);
+	        	break;
+	        case "5": 
+	        	total(list);
+	        	break;
+	        case "0": 
+	        	b=false;
+	        	System.out.println("退出成功!");
+	        	break;
+	        }
+           }  
+	       
+}
+	  //新增员工
+	  public static void add(List<Employee> list) {
+		Employee e=new Employee();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("请输入员工工号");
+		int code=sc.nextInt();
+		for(Employee oj:list) {
+			if(code==oj.getCode()) {
+				System.out.println("该工号已存在");
+			    return;
+		   }
+		}
+		e.setCode(code);
+		System.out.println("请输入员工姓名");
+		e.setName(sc.next());
+		System.out.println("请输入员工部门");
+		e.setDept(sc.next());
+		System.out.println("请输入员工性别");
+		e.setSex(sc.next());
+		list.add(e);
+		System.out.println("新增员工成功!");
+	}
+	  //编辑员工
+	  public static void update(List<Employee> list) {
+		  Scanner sc=new Scanner(System.in); 
+		  Employee e=new Employee();
+		  System.out.println("请输入修改员工号");
+		  int code=sc.nextInt();
+		  for(int i=0;i<list.size();i++) {
+			  if(code==list.get(i).getCode()) {
+				  System.out.println(list.get(i));
+				 
+				    e.setCode(code);
+					System.out.println("请输入员工姓名");
+					e.setName(sc.next());
+					System.out.println("请输入员工部门");
+					e.setDept(sc.next());
+					System.out.println("请输入员工性别");
+					e.setSex(sc.next());
+				    list.remove(i);
+				    list.add(i,e);
+				    System.out.println("修改成功!");
+		
+			  }
+		  }
+	  }
+	  //删除员工
+	  //删除员工
+      public static void delete(List<Employee> list) {
+    	  Scanner sc=new Scanner(System.in); 
+    	  System.out.println("请输入删除员工号");
+		  int code=sc.nextInt();
+		  for(int i=0;i<list.size();i++) {
+			  if(code==list.get(i).getCode()) {
+				  list.remove(i);
+				  System.out.println("删除成功!");
+			  }
+		  }
+	  }
+      //查询员工
+	  public static void select(List<Employee> list) {
+		  for(Employee s1:list) {
+			  System.out.println("性别:"+s1.getName()+" 工号:"+s1.getCode()+" 性别:"+s1.getSex()+" 部门:"+s1.getDept());
+		  }
+		  
+		}
+	  //统计每个部门的员工数量
+	  public static void total(List<Employee> list) {
+		  //list存放每一个员工
+		  Map<String, Integer> map = new HashMap<>();//部门，该部门员工数量
+		  int count =0;
+		  for(int i=0;i<list.size();i++) {
+			  map.put(list.get(i).getDept(),map.get(list.get(i).getDept())!=null?map.get(list.get(i).getDept())+1:1);
+		  } 
+		  System.out.println(map);
+	  } 
+}
