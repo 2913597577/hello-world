@@ -1,0 +1,79 @@
+package XianCheng;
+
+import java.util.ArrayList;
+import java.util.Vector;
+
+public class LianXi {
+	    //定义一个ArrayList ,定义一个方法向ArrayList中添加200个对象new 0bject();
+		//定义一个Vector ,定义一个方法向Vector中添加200个对象new 0bject();
+		
+		//以上两个任务分别声明4个线程执行
+		
+		//main方法中休眠10秒,打印list和vector中的对象数量
+	
+	public static void main(String[] args) {
+	
+		ArrayList<Object> al=new ArrayList<>();
+		Vector<Object> ve=new Vector<>();
+		
+		Runnable run1=()->{
+			while (num1<200) {
+				m1(al);
+			}
+		};
+		Runnable run2=()->{
+			while (num2<200) {
+				m2(ve);
+			}
+		};
+		
+		Thread t1=new Thread(run1);
+		Thread t2=new Thread(run1);
+		Thread t3=new Thread(run1);
+		Thread t4=new Thread(run1);
+		
+		Thread t5=new Thread(run2);
+		Thread t6=new Thread(run2);
+		Thread t7=new Thread(run2);
+		Thread t8=new Thread(run2);
+	    
+		t1.start();
+		t2.start();
+		t3.start();
+		t4.start();
+		
+		t5.start();
+		t6.start();
+		t7.start();
+		t8.start();
+		
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}			
+				System.out.println(num1);
+				System.out.println(num2);
+		
+	}
+	
+	public static int num1=0;
+	public static int num2=0;
+	
+	public static synchronized void m1(ArrayList<Object> al) {
+		if(num1>=200) {
+			return;
+		}
+		al.add(new Object());
+			num1++;	
+	}
+	public static synchronized void m2(Vector<Object> ve) {
+		if(num2>=200) {
+			return;
+		}
+		ve.add(new Object());
+			num2++;	
+	}
+}
+
