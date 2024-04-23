@@ -1,0 +1,26 @@
+Index: .idea/modules.xml
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	
++++ b/.idea/modules.xml	
+@@ -3,7 +3,6 @@
+   <component name="ProjectModuleManager">
+     <modules>
+       <module fileurl="file://$PROJECT_DIR$/.idea/code.iml" filepath="$PROJECT_DIR$/.idea/code.iml" />
+-      <module fileurl="file://$PROJECT_DIR$/yangzhicheng_model.iml" filepath="$PROJECT_DIR$/yangzhicheng_model.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
+Index: yangzhicheng_model/src/main/java/yangzhicheng.java
+===================================================================
+diff --git a/yangzhicheng_model/src/main/java/yangzhicheng.java b/yangzhicheng_model/src/main/java/yangzhicheng.java
+--- a/yangzhicheng_model/src/main/java/yangzhicheng.java	
++++ b/yangzhicheng_model/src/main/java/yangzhicheng.java	
+@@ -1,5 +1,5 @@
+ public class yangzhicheng {
+     public static void main(String[] args) {
+-        System.out.println("你好世界");
++        System.out.println("你好世界1");
+     }
+ }
