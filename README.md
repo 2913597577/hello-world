@@ -1,6 +1,4 @@
 # hello-world
-你好
-修改一下-郗鸿琛
 package com.esay;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
