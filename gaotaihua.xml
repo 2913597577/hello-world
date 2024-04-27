@@ -1,1 +1,104 @@
+package com.easya;
+
+//ctrl alt v  自动生成左边变量
+
+public class EasyA {
+    //面向对象
+    //要完成一件事情,关注那个对象能帮我完成这件事情
+    //类?  对象?
+    //在实际的生活中
+    //甲乙丙丁...很多的个体聚集在一起,他们组成了一类事物
+    // 慢慢的有了人类的群体的概念
+    //甲乙丙丁就是人类中的一些个体,这些个体就有相同的特性和行为
+
+    //在程序中,必须先要有类的内存  定义一个类  在一个类中可以定义一些属性和方法
+    //有了类之后才能生成这个类的个体(对象)
+    public static void main(String[] args) {
+        //创建(实例化)一个Goods类的对象,使用关键字new来实例化一个类的对象
+        //实例化一个对象,如果我们的程序需要使用这个对象
+        //就可以定义一个变量来指向(记录)这个对象
+        Goods goods = new Goods();
+        //这个对象的内存中就拥有该类的属性
+        //可以对这个对象的属性进行赋值和取值
+        goods.name="手机";
+        goods.price=3500;
+        //System.out.printf("%.2f",goods.price);
+        //每一个对象都是一个独立的个体  每一个对象都拥有独立的内存
+        //每个对象记录的内容相互间不受影响
+
+        Book bookA = new Book();
+        bookA.name="语文";
+        bookA.price=20;
+        bookA.publisher="出版社A";
+        //System.out.println(bookA);
+        System.out.println(bookA.introduce());
+
+        Book bookB = new Book();
+        bookB.name="数学";
+        bookB.price=30;
+        bookB.publisher="出版社B";
+        //System.out.println(bookB);
+        System.out.println(bookB.introduce());
+
+        //vip 八折
+        double zhekou = 0.8;
+        goods.realPrice(zhekou);
+        //System.out.println(real);
+    }
+}
+
+
+//定义一个类  Goods就是类名  全名:com.easya.Goods
+//在类中直接定义的变量就是全局变量也叫做类的属性
+//变量的作用域
+//全局变量:在类中直接声明的变量就是全局变量(在整个类中都可以访问到的变量)
+//局部变量:在方法,代码块中声明的变量叫做局部变量(只在当前代码块{})
+
+
+class Goods{
+    //每个货品都有价格,名称,产地,生产日期等属性
+    //这样我们就在Goods这个类中定义这些属性
+    String name;
+    double price;
+
+    //定义方法
+    //根据一个折扣返回这个货品真实售卖的价格(double)
+    public double realPrice(double discount){
+        //在本类中的方法可以直接调用本类中的属性和方法
+        double result = price*discount;
+        return result;
+    }
+}
+
+class Book {
+    String name;
+    double price;
+    String publisher;
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", publisher='" + publisher + '\'' +
+                '}';
+    }
+
+    public String introduce(){
+        return "本书书名是"+name+",由"+publisher+
+                "出版"+",售卖"+price+"元";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
