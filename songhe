@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class LianXi {
-	    //定义一个ArrayList ,定义一个方法向ArrayList中添加200个对象new 0bject();
-		//定义一个Vector ,定义一个方法向Vector中添加200个对象new 0bject();
+	    
+//定义一个ArrayList ,定义一个方法向ArrayList中添加200个对象new 0bject();
 		
+//定义一个Vector ,定义一个方法向Vector中添加200个对象new 0bject();
+
+
 		//以上两个任务分别声明4个线程执行
-		
+
+
 		//main方法中休眠10秒,打印list和vector中的对象数量
 	
 	public static void main(String[] args) {
